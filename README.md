@@ -18,3 +18,5 @@ $ npm install -D git+ssh://git@github.com:madebydaniz/nextjs-prettier-config.git
   "prettier": "nextjs-prettier-config",
 }
 ```
+
+test version
