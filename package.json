@@ -1,0 +1,29 @@
+{
+  "name": "nextjs-prettier-config",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madebydaniz/nextjs-prettier-config.git"
+  },
+  "keywords": [
+    "nextjs",
+    "prettier",
+    "config"
+  ],
+  "author": "Daniel Niazmand <madebydaniz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/madebydaniz/nextjs-prettier-config/issues"
+  },
+  "homepage": "https://github.com/madebydaniz/nextjs-prettier-config#readme",
+  "description": "Prettier configuration for Next.js projects",
+  "dependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "prettier-plugin-tailwindcss": "^0.6.11"
+  },
+  "peerDependencies": {
+    "prettier": "^3.5.3"
+  }
+}
