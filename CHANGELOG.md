@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/madebydaniz/nextjs-prettier-config/compare/v1.0.1...v1.0.2) (2025-03-09)
+
+
+### 👽 Miscellaneous
+
+* **main:** relase ([#10](https://github.com/madebydaniz/nextjs-prettier-config/issues/10)) ([fa3f5a4](https://github.com/madebydaniz/nextjs-prettier-config/commit/fa3f5a4194eebdc62c1ca3d7570aaf4c9afd2cb8))
+
 ## [1.0.1](https://github.com/madebydaniz/nextjs-prettier-config/compare/v1.0.0...v1.0.1) (2025-03-09)
 
 
