@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/madebydaniz/nextjs-prettier-config/compare/v1.0.2...v1.0.3) (2025-03-09)
+
+
+### 👽 Miscellaneous
+
+* updade and fix ([#12](https://github.com/madebydaniz/nextjs-prettier-config/issues/12)) ([f2dbd2c](https://github.com/madebydaniz/nextjs-prettier-config/commit/f2dbd2cf11684bd5cd8a3bcd668c3241c505068f))
+
 ## [1.0.2](https://github.com/madebydaniz/nextjs-prettier-config/compare/v1.0.1...v1.0.2) (2025-03-09)
 
 
