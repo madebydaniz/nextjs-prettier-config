@@ -9,7 +9,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  github-release:
+  release:
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
@@ -22,12 +22,44 @@ jobs:
         uses: googleapis/release-please-action@v4
         id: release
         with:
+          target-branch: ${{ github.ref_name }}
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: .github/release-please-config.json
           manifest-file: .github/.release-please-manifest.json
-          skip-github-pull-request: true
       - name: 'Print release outputs for debugging'
         continue-on-error: true
         run: |
           echo "Release outputs:"
           echo "${{ toJson(steps.release.outputs) }}"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Tag versions
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git remote add gh-token "https://${{ secrets.GITHUB_TOKEN }}@github.com/googleapis/release-please-action.git"
+
+          # Extract version information
+          TAG_NAME="${{ steps.release.outputs.tag_name }}"
+          MAJOR="${{ steps.release.outputs.major }}"
+          MINOR="${{ steps.release.outputs.minor }}"
+
+          if [[ "${GITHUB_REF##*/}" == "main" ]]; then
+            # For main branch: Major, Minor, and Latest tags
+            git tag -d v$MAJOR || true
+            git tag -d v$MAJOR.$MINOR || true
+            git tag -d latest || true
+
+            git push origin :v$MAJOR || true
+            git push origin :v$MAJOR.$MINOR || true
+            git push origin :latest || true
+
+            git tag -a v$MAJOR -m "Release v$MAJOR"
+            git tag -a v$MAJOR.$MINOR -m "Release v$MAJOR.$MINOR"
+            git tag -a latest -m "Latest stable release"
+
+            git push origin v$MAJOR
+            git push origin v$MAJOR.$MINOR
+            git push --force origin latest  # Force update latest tag
+          fi
